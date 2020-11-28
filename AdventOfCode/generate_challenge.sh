@@ -19,17 +19,17 @@ if [[ -z "$SESSION_KEY" ]]; then
     exit 1
 fi
 
-cd "Inputs/"
+cd "source/inputs/"
 sh "download_input.sh" $YEAR $DAY $SESSION_KEY
 echo ""
 
-cd "../Source/Challenges/"
+cd "../source/challenges/"
 sh "generate_challenge_code.sh" $DAY
 echo ""
 
-cd "../Generated/"
-sh "generate_definitions_code.sh"
-echo ""
+# cd "../Generated/"
+# sh "generate_definitions_code.sh"
+# echo ""
 
-cd "../../"
-sh "generate_solution.sh"
+# cd "../../"
+# sh "generate_solution.sh"

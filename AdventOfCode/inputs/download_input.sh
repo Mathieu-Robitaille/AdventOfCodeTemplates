@@ -5,7 +5,7 @@ DAY=${2}
 SESSION_KEY=${3}
 
 DAY_NO_ZERO=$(echo $DAY | sed "s/^0*//")
-OUTPUT_FILE="Input_Challenge_$DAY.txt"
+OUTPUT_FILE="input_challenge_$DAY.txt"
 
 echo "  >>  Downloading file from 'https://adventofcode.com/'..."
 URL="https://adventofcode.com/$YEAR/day/$DAY_NO_ZERO/input"

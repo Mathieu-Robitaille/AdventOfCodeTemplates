@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "  ==  GENERATING PROJECT SOLUTION  ==  "
 
-PROJECT_FILE="AdventOfCode.vcxproj"
-FILTERS_FILE="AdventOfCode.vcxproj.filters"
+PROJECT_FILE=""
+FILTERS_FILE=""
 
 BEGIN_SYMBOL="<ItemGroup>"
 END_SYMBOL="</ItemGroup>"
