@@ -10,7 +10,7 @@ lib.getInput(year, day).then((data) => {
         total += Math.floor(element/3) - 2;
     });
 
-    console.log(total);
+    console.log("Total -> ", total);
 
     console.log("-- Writing output --");
     lib.writeOutput(String(total), year, day);

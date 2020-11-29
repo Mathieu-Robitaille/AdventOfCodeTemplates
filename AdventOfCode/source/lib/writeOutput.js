@@ -9,10 +9,10 @@ function writeOutput(data){
         if(fs.existsSync(currentDirectory)) {
             fs.writeFile(outputFileName, data, (err) => {
                 if(err) throw err;
-                console.log(" |- Wrote - ${currentDirectory}");
+                console.log(" |- Wrote ->", currentDirectory);
             })
         } else {
-            console.log(" |- ${currentDirectory}")
+            console.log(" |- >", currentDirectory)
             console.log(err);
         }
     });
