@@ -12,7 +12,7 @@ rl.question('Year ', (year) => {
         fs.readFile(path.resolve(__dirname, 'skeleton.js'), 'utf-8', (err, skeleton) => {
             skeleton = skeleton.replace('{{year}}', year).replace('{{day}}', day)
 
-            let yearPath = path.resolve(__dirname, year);
+            let yearPath = path.resolve(__dirname, "source/challenges/", year);
 
             if(!fs.existsSync(yearPath)) {
                 fs.mkdirSync(yearPath);

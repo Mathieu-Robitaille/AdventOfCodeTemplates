@@ -9,7 +9,7 @@ if [[ (-z $YEAR) || (-z $DAY) ]]; then
     exit 1
 fi
 
-SESSION_KEY_FILE="session_key.txt"
+SESSION_KEY_FILE="source/lib/auth_cookie.txt"
 SESSION_KEY=$(<$SESSION_KEY_FILE)
 
 if [[ -z "$SESSION_KEY" ]]; then
@@ -19,17 +19,15 @@ if [[ -z "$SESSION_KEY" ]]; then
     exit 1
 fi
 
-cd "source/inputs/"
-sh "download_input.sh" $YEAR $DAY $SESSION_KEY
-echo ""
+ROOT_DIRECTORY="$(pwd)"
 
-cd "../source/challenges/"
-sh "generate_challenge_code.sh" $DAY
-echo ""
-
-# cd "../Generated/"
-# sh "generate_definitions_code.sh"
+# cd "$ROOT_DIRECTORY/source/inputs/"
+# sh "download_input.sh" $YEAR $DAY $SESSION_KEY
 # echo ""
+
+cd "$ROOT_DIRECTORY/source/challenges/"
+sh "generate_challenge_code.sh" $YEAR $DAY
+echo ""
 
 # cd "../../"
 # sh "generate_solution.sh"

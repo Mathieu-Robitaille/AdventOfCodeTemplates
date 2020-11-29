@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sguest/advent-of-code.git"
+    "url": "git+https://github.com/Mathieu-Robitaille/adventofcode.git"
   },
   "author": "Mathieu Robitaille",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sguest/advent-of-code/issues"
+    "url": "https://github.com/Mathieu-Robitaille/adventofcode/issues"
   },
-  "homepage": "https://github.com/sguest/advent-of-code#readme",
+  "homepage": "https://github.com/Mathieu-Robitaille/adventofcode#readme",
   "dependencies": {
     "bigint-crypto-utils": "^2.4.2",
     "chalk": "^2.4.1",
