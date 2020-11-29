@@ -1,4 +1,5 @@
 module.exports = {
     getInput: require('./getInput'),
-    writeOutput: require('./writeOutput'),
+    writeOutput: require('./Output'),
+    appendOutput: require('./Output'),
 }
