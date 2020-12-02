@@ -9,7 +9,7 @@ function writeOutput(data){
         if(fs.existsSync(currentDirectory)) {
             fs.writeFile(outputFileName, data, (err) => {
                 if(err) throw err;
-                console.log(" |- Wrote ->", currentDirectory);
+                console.log(" |- Wrote ->", outputFileName);
             })
         } else {
             console.log(" |- >", currentDirectory)
@@ -24,9 +24,9 @@ function appendOutput(data){
     let outputFileName = path.resolve(currentDirectory, 'output.txt');
         fs.stat(outputFileName, (err, stats) => {
         if(fs.existsSync(currentDirectory)) {
-            fs.writeFile(outputFileName, data, (err) => {
+            fs.appendFile(outputFileName, data, (err) => {
                 if(err) throw err;
-                console.log(" |- Wrote ->", currentDirectory);
+                console.log(" |- Wrote ->", outputFileName);
             })
         } else {
             console.log(" |- >", currentDirectory)
