@@ -3,7 +3,6 @@ var { readdirSync } = require('fs');
 var path = require('path')
 var router = express.Router();
 
-
 const getDirectories = source =>
   readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())

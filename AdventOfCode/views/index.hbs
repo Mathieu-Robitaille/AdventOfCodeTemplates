@@ -1,0 +1,29 @@
+{{#if title}}
+<h1>{{title}}</h1>
+{{#if subtitle}}
+<p>Welcome to {{subtitle}}</p>
+{{/if}}
+{{/if}}
+
+<M>
+  Here are the following years
+</M>
+
+{{#if listing}}
+<ol>
+{{#each listing as |year|}}
+    {{!-- # this will print 2018 or 2019 in order --}}
+    {{ @key }} 
+    {{#each year as |day|}}
+      <ul>
+        <li>
+          {{!-- # the parentkey var is what i'm trying to replace with something that will refrence the above year, --}}
+          <a href="/year/?year={{ parentkey }}&day={{ day }}">{{ day }}</a>
+        </li>
+      </ul>
+    {{/each}}
+{{/each}}
+</ol>
+{{else}}
+<p>No years are available.</p>
+{{/if}}
