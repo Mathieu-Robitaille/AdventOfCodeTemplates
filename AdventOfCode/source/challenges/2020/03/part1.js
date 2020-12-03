@@ -8,8 +8,9 @@ lib.getInput(year, day).then((data) => {
     let iter = 0;
     let output = 0;
     for(let line of lines) {
+        if(lines.indexOf(line) == 0) continue;
         iter += 3;
-        if(line[iter % line.length] == "#") output++;
+        if(line[iter % line.length] === "#") output++;
     }
 
     console.log("-- Displaying output --");
