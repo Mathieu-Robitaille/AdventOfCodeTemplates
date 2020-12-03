@@ -24,13 +24,15 @@ rl.question('Year ', (year) => {
                 fs.mkdirSync(outputPath);
             }
 
-            outputPath = path.resolve(outputPath, 'part1.js');
-            fs.writeFile(outputPath, skeleton, (err) => {
-                if(err) {
-                    console.log(err);
-                }
-                rl.close();
+            outputPath1 = path.resolve(outputPath, 'part1.js');
+            outputPath2 = path.resolve(outputPath, 'part2.js');
+            fs.writeFile(outputPath1, skeleton, (err) => {
+                if(err) console.log(err);
             });
+            fs.writeFile(outputPath2, skeleton, (err) => {
+                if(err) console.log(err);
+            });
+            rl.close();
         });
     })
 });
