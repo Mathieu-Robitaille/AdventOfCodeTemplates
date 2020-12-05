@@ -18,28 +18,26 @@ function betweenRange(string, startingRange, endingRange){
     return (string >= startingRange && endingRange >= string) ? true : false;
 }
 
+function validateYear(year, lowEnd, highEnd) {
+    let yearRegex = /^[12][90][0-9]{2}$/
+    if(yearRegex.exec(year) === null) return false;
+    if(!(betweenRange(parseInt(year), lowEnd, highEnd))) return false;
+    return true;
+}
+
 function vaildatePassport(passport) {
-    let yearRegex = /[12][90][0-9]{2}/
-    if(yearRegex.exec(passport.byr) !== null){
-        if(!(betweenRange(parseInt(passport.byr), 1920, 2002))){
-            return false;
-        }
-    }  
 
-    if(yearRegex.exec(passport.iyr) !== null){ 
-        if(!(betweenRange(parseInt(passport.iyr), 2010, 2020))) {
-            return false;
-        }
-    }
+    // ((byr|iyr|eyr):[12][90][0-9]{2}|hgt:[1-9][0-9]{2}cm|hgt:[1-9]{2}in|pid:[0-9]{9}|ecl:#[0-9a-f]{6}$|ecl:(amb|blu|brn|gry|hzl|oth))
 
-    if(yearRegex.exec(passport.eyr) !== null) {
-        if(!betweenRange(parseInt(passport.eyr), 2020, 2030)) {
-            return false;
-        }
-    }
+    let heightRegexCM = /^1[5-9][0-9]cm$/;
+    let heightRegexIN = /^[5-7][0-9]in$/;
+    let hairColorRegex = /^#[0-9a-f]{6}$/
+    let passportIDRegex = /^[0-9]{9}$/
+    let eyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
 
-    let heightRegexCM = /cm/;
-    let heightRegexIN = /in/;
+    if(!(validateYear(passport.byr, 1920, 2002))) return false;
+    if(!(validateYear(passport.iyr, 2010, 2020))) return false;
+    if(!(validateYear(passport.eyr, 2020, 2030))) return false;
 
     if(heightRegexCM.exec(passport.hgt)){
         if(!(betweenRange(parseInt(passport.hgt.replace('cm', '')), 150, 193))) return false;
@@ -49,14 +47,11 @@ function vaildatePassport(passport) {
         return false;
     }
 
-    let hairColorRegex = /#[0-9a-f]{6}/
-    if(!hairColorRegex.exec(passport.hcl)) return false;
-
-    let eyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth",];
+    if(hairColorRegex.exec(passport.hcl) === null) return false;
     if(!(eyeColors.includes(passport.ecl))) return false;
+    if(passportIDRegex.exec(passport.pid) === null) return false;
 
-    let passportIDRegex = /[0-9]{9}/
-    if(!(passportIDRegex.exec(passport.pid)) && passport.pid.length === 9) return false;
+    // console.log(passport);
 
     return true;
 }
@@ -80,6 +75,8 @@ function vaildateLength(passport) {
 
 lib.getInput(year, day).then((data) => {
     let lines = data.split('\n\n').map((item) => {
+        // effectivly 
+        // $ sed 's/^$/|/g' | tr '\n' ' ' | tr '|' '\n'
         return String(item).replace(/\n/g, ' ');
     });
     let buffer = {};

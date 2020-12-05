@@ -5,16 +5,14 @@ let day = 03;
 
 lib.getInput(year, day).then((data) => {
     let lines = data.split('\n');
-    let iter = 0;
     let output = 0;
-    for(let line of lines) {
-        if(lines.indexOf(line) == 0) continue;
-        iter += 3;
-        if(line[iter % line.length] === "#") output++;
+    for(i = 1; i <= lines.length; i++) {
+        let line = String(lines[i]);
+        if(line[i * 3 % line.length] === "#") output++;
     }
 
     console.log("-- Displaying output --");
-    console.log(output);
+    console.log(" |-", output);
 
     console.log("-- Writing output --");
     lib.writeOutput(output);
