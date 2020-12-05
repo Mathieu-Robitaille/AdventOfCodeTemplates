@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    {{> head}}
+</head>
+<body>
+    <!-- render the template for the page -->
+</body>
+</html>
+
+<!-- directory.hbs -->
+<ul>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+</ul>
+
+<!-- challenge.hbs (year, day) -->
+<!-- Context includes  {
+    directory of all challenges (let sidebar)
+} -->
+
+<div class="left-sidebar">
+    {{> directory directory-info=context.directory}}
+</div>
+
+
+emmet stuff
+ul>li*5
