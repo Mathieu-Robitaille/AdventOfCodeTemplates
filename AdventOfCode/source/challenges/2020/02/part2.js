@@ -44,7 +44,6 @@ lib.getInput(year, day).then((data) => {
     }
 
     console.log(valid);
-
     console.log("-- Writing output --");
     lib.writeOutput(valid);
 }).catch((err) => {

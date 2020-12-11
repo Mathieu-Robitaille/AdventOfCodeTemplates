@@ -43,9 +43,6 @@ lib.getInput(year, day).then((data) => {
 
     console.log("-- Displaying output --");    
     console.log(" |-", mySeat(seats));
-    
-    console.log("-- Writing output --");
-    lib.writeOutput(output);
 }).catch((err) => {
     console.log(err, err.stack);
 });

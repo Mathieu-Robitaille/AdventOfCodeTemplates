@@ -49,9 +49,6 @@ lib.getInput(year, day).then((data) => {
 
     console.log("-- Displaying output --");
     console.log(" |-", output);
-
-    console.log("-- Writing output --");
-    lib.writeOutput(buffer);
 }).catch((err) => {
     console.log(err, err.stack);
 });

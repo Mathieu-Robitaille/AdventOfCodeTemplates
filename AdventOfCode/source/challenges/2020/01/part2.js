@@ -25,10 +25,9 @@ lib.getInput(year, day).then((data) => {
     }
 
     var output = a * b * c;
-    console.log(" Result -> ",output);
-    console.log(" # iterations -> ",iter);
-    console.log("-- Writing output --");
-    lib.writeOutput(output);
+
+    console.log(" ╦ Displaying output ");
+    console.log(" ╚> ", output);
 }).catch((err) => {
     console.log(err, err.stack);
 });
