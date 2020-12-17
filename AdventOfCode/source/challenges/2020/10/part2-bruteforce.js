@@ -1,5 +1,6 @@
 let lib = require('../../../lib');
 let graph = require('../lib/nodeGraph');
+const { performance } = require('perf_hooks')
 
 let year = 2020;
 let day = 10;
@@ -7,26 +8,25 @@ let day = 10;
 
 lib.getInput(year, day).then((data) => {
     let lines = data.split('\n').map(x => +x).sort((a,b) => {return a-b;});
+    lines.unshift(0);
 
     let nodeGraph = new graph.Graph();
     let finalNode = Math.max(...lines);
+    
     for(let i of lines) {
-        for(let j of lines.filter(x => { if(Math.abs(x - i) <= 3 && x !== i && x > i) return x; })) {
+        for(let j of lines.filter(x => { if(Math.abs(x - i) <= 3 && x !== i && x > i && Math.abs(x - i) !== 2) return x; })) {
             nodeGraph.addEdge(i, j);
         }
     }
-    let path = nodeGraph.dfsRecursive(1);
-    let resultOne = 1;
-    let resultThree = 1;
-    path.forEach((element, index, array) => {
-        if(Math.abs(element - array[index + 1]) === 1) resultOne++;
-        if(Math.abs(element - array[index + 1]) === 3) resultThree++;
-    });
 
-    console.log();
+    let v0 = performance.now();
+    let result = nodeGraph.countPaths(1);
+    let v1 = performance.now();
 
     console.log(" ╦ Displaying output ");
-    console.log(" ╚> ", resultOne * resultThree);
+    console.log(" ╚> ", result, "and it only took", v1-v0, "to run!");
 }).catch((err) => {
     console.log(err, err.stack);
 });
+
+// goal: 396857386627072
